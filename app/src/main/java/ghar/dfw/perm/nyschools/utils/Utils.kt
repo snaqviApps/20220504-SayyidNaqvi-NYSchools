@@ -1,13 +1,12 @@
 package ghar.dfw.perm.nyschools.utils
 
 import androidx.core.text.isDigitsOnly
-import kotlinx.coroutines.flow.emptyFlow
 
 fun <T1 : Any, T2 : Any, R : Any> safeLet(p1: T1?, p2: T2?, block: (T1, T2) -> R?): R? {
     return if (p1 != null && p2 != null) block(p1, p2) else null
 }
 
-fun <R : Any> safeLet(p1: String?, p2: String?, p3: String?, block: (String?, String?, String?) -> R?): R? {
+fun <R : Any> safeLet(p1: String?, p2: String?, p3: String?, block: (String, String, String) -> R?): R? {
         return if (
           ( p1.toString().isNotEmpty() && p1!!.isDigitsOnly()) &&
           ( p2.toString().isNotEmpty() && p2!!.isDigitsOnly()) &&
