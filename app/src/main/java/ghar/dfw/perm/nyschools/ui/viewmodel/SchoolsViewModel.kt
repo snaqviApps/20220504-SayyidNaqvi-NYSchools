@@ -61,6 +61,14 @@ class SchoolsViewModel : ViewModel() {
         }
     }
 
+    fun schoolClicked(name: String?) {
+        _navigateToDetailsFragment.value = name
+    }
+
+    private val _navigateToDetailsFragment = MutableLiveData<String?>()
+    val navigateToDetailsFragment
+        get() = _navigateToDetailsFragment
+
     sealed class UIState {
         object EmptyState : UIState()
         class SuccessState(

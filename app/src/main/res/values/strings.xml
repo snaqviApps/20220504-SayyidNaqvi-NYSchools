@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">20220505_SayyidNaqviNYSchools</string>
     <string name="math">Math:</string>
-    <string name="some_text">Some text</string>
+    <string name="some_text">Schools</string>
     <string name="reading">Reading:</string>
     <string name="writing">Writing:</string>
     <string name="some_other_text">Some other text</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="show_details">Details</string>
 </resources>

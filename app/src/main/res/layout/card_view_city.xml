@@ -1,4 +1,15 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout>
+   <data>
+       <variable
+           name="school"
+           type="ghar.dfw.perm.nyschools.network.model.SchoolsResultRestApi" />
+       <variable
+           name="clickListener"
+           type="ghar.dfw.perm.nyschools.ui.adapter.SchoolAdapter.SchoolsNameListener" />
+   </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,8 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,103 +26,115 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:padding="8dp"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+            <TextView
+                android:id="@+id/mTextViewSchoolName"
+                android:layout_width="0dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="16dp"
+                android:text="@string/some_text"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/mTextViewSchoolName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/some_text"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/mLinearLayoutContainerSubItem"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:paddingTop="25dp"
-                android:paddingBottom="25dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/mTextViewCriticalReadingAvgScoreLabel"
-                        android:layout_width="90dp"
-                        android:layout_height="wrap_content"
-                        android:paddingEnd="16dp"
-                        android:text="@string/reading"
-                        android:textColor="#555"
-                        tools:ignore="RtlSymmetry" />
-
-                    <TextView
-                        android:id="@+id/mTextViewCriticalReadingAvgScore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:text="@string/some_other_text"
-                        android:textColor="#555" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/mTextViewMathAvgScoreLabel"
-                        android:layout_width="90dp"
-                        android:layout_height="wrap_content"
-                        android:paddingEnd="16dp"
-                        android:text="@string/math"
-                        android:textColor="#555"
-                        tools:ignore="RtlSymmetry" />
-
-                    <TextView
-                        android:id="@+id/mTextViewMathAvgScore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:text="@string/some_other_text"
-                        android:textColor="#555" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/mTextViewWritingAvgScoreLabel"
-                        android:layout_width="90dp"
-                        android:layout_height="wrap_content"
-                        android:paddingEnd="16dp"
-                        android:text="@string/writing"
-                        android:textColor="#555"
-                        tools:ignore="RtlSymmetry" />
-                    <TextView
-                        android:id="@+id/mTextViewWritingAvgScore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/some_other_text"
-                        android:visibility="gone"
-                        android:textColor="#555" />
-                </LinearLayout>
-
-            </LinearLayout>
+            <Button
+                android:id="@+id/buToDetails"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:onClick="@{()-> clickListener.onClick(school)}"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="14dp"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/show_details"
+                android:textSize="10sp"
+                android:textStyle="bold" />
         </LinearLayout>
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/mLinearLayoutContainerSubItem"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="16dp"-->
+<!--                android:paddingTop="25dp"-->
+<!--                android:paddingBottom="25dp">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/mTextViewCriticalReadingAvgScoreLabel"-->
+<!--                        android:layout_width="90dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:paddingEnd="16dp"-->
+<!--                        android:text="@string/reading"-->
+<!--                        android:textColor="#555"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/mTextViewCriticalReadingAvgScore"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:visibility="gone"-->
+<!--                        android:text="@string/some_other_text"-->
+<!--                        android:textColor="#555" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/mTextViewMathAvgScoreLabel"-->
+<!--                        android:layout_width="90dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:paddingEnd="16dp"-->
+<!--                        android:text="@string/math"-->
+<!--                        android:textColor="#555"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/mTextViewMathAvgScore"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:visibility="gone"-->
+<!--                        android:text="@string/some_other_text"-->
+<!--                        android:textColor="#555" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/mTextViewWritingAvgScoreLabel"-->
+<!--                        android:layout_width="90dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:paddingEnd="16dp"-->
+<!--                        android:text="@string/writing"-->
+<!--                        android:textColor="#555"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/mTextViewWritingAvgScore"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/some_other_text"-->
+<!--                        android:visibility="gone"-->
+<!--                        android:textColor="#555" />-->
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
