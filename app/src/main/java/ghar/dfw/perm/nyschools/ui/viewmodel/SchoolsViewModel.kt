@@ -20,6 +20,9 @@ import javax.inject.Inject
 
 class SchoolsViewModel : ViewModel() {
 
+    private lateinit var scores: List<ScoresResultRestApi>
+    private lateinit var schools: List<SchoolsResultRestApi>
+
     private val _schoolApiCallResponse = MutableLiveData<UIState>()
     val schoolApiCallResponse: LiveData<UIState>
         get() = _schoolApiCallResponse
@@ -43,8 +46,8 @@ class SchoolsViewModel : ViewModel() {
         withContext(Dispatchers.IO) {
             withTimeout(MAX_TIME_OUT) {
                 try {
-                    val schools = schoolApi.getSchools()
-                    val scores = schoolApi.getScores()
+                    schools = schoolApi.getSchools()
+                    scores = schoolApi.getScores()
                     if (!schools.isNullOrEmpty() && !scores.isNullOrEmpty()) {
                         _schoolApiCallResponse.postValue(UIState.SuccessState(schools, scores)
                         )

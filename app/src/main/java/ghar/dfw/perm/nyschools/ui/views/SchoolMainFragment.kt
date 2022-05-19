@@ -38,6 +38,7 @@ class SchoolMainFragment() : Fragment() {
   private fun setupRV() {
     binding.mRecyclerViewSchools.layoutManager = LinearLayoutManager(requireContext())
     binding.mainXmlViewModel = schoolsViewModel
+    binding.lifecycleOwner = this
   }
 
   private fun setupObservers() {
@@ -74,9 +75,9 @@ class SchoolMainFragment() : Fragment() {
 
           safeLet(schoolMatchedList, scoreMatchedList) { safeSchools, safeScores ->
             val adapter = SchoolAdapter(safeSchools, safeScores,
-              SchoolAdapter.SchoolsNameListener { schoolName ->
+              SchoolAdapter.SchoolsNameListener { school ->
                 run {
-                  schoolsViewModel.schoolClicked(safeSchools[0].schoolName)
+                  schoolsViewModel.schoolClicked(school)
                 }
               })
 

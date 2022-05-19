@@ -20,5 +20,8 @@
         <argument
             android:name="sentSchoolName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailsFragment_to_schoolMainFragment"
+            app:destination="@id/schoolMainFragment" />
     </fragment>
 </navigation>
